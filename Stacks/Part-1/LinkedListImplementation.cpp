@@ -25,11 +25,18 @@ public:
     }
     void pop(){
         if(head==NULL){
-            cout<<"Underflow";
-            return;
+            cout<<"Stack is empty";
+            return ;
         }
         head=head->next;
         size--;
+    }
+    int top(){
+        if(head==NULL){
+            cout<<"Stack is Empty";
+            return -1;
+        }
+        return head->val;
     }
     void display(){
         Node* temp=head;
@@ -38,15 +45,11 @@ public:
             temp=temp->next;
         }
     }
-
 };
 int main(){
     Stack st;
     st.push(10);
+    st.push(20);
     st.push(30);
-    st.push(50);
-    st.push(60);
-    st.pop();
     st.display();
-
 }
