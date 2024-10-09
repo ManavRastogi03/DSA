@@ -24,3 +24,7 @@ int main(){
         cout<<arr[i]<<" ";
     }
 }
+// BestCase-:0(N)
+// Worst case ,Avg case:0(n2)
+// Bubble sot is stable
+// total no of pass =n(n-1)/2

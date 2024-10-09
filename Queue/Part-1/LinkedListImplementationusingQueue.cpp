@@ -8,7 +8,6 @@ public:
         this->val=val;
         this->next=NULL;
     }
-
 };
 class Queue{
 public:
@@ -16,8 +15,7 @@ public:
     Node* tail;
     int size;
     Queue(){
-        head=NULL;
-        tail=NULL;
+        tail=head=NULL;
         size=0;
     }
     void push(int val){
@@ -30,26 +28,17 @@ public:
         size++;
     }
     void pop(){
-        if(size==0) cout<<"List is empty";
+        if(size==0){
+            cout<<"Underflow";
+            return;
+        }
         else{
             head=head->next;
-            size--;
         }
+        size--;
     }
     void front(){
-        if(size==0){
-            cout<<"Queue Is Empty";
-            return;
-        } 
-        cout<<head->val;
-    }
-    void back(){
-        if(size==0){
-            cout<<"Queue is Empty";
-        }
-        else{
-            cout<<tail->val;
-        }
+        cout<<head->val<<endl;
     }
     void display(){
         Node* temp=head;
@@ -57,7 +46,6 @@ public:
             cout<<temp->val<<" ";
             temp=temp->next;
         }
-
         cout<<endl;
     }
 
@@ -70,4 +58,7 @@ int main(){
     q.push(40);
     q.push(50);
     q.display();
+    q.pop();
+    q.display();
+
 }

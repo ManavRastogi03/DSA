@@ -12,14 +12,14 @@ public:
         this->right=NULL;
     }
 };
-void nthprint(Node* root,int curr,int level){
+void printnth(Node* root,int curr,int level){
     if(root==NULL) return;
     if(curr==level){
         cout<<root->val<<" ";
         return;
-    } 
-    nthprint(root->left,curr+1,level);
-    nthprint(root->right,curr+1,level);
+    }
+    printnth(root->left,curr+1,level);
+    printnth(root->right,curr,level);
 }
 int level(Node* root){
     if(root==NULL) return 0;
@@ -51,13 +51,11 @@ int main(){
     b->right=e;
     c->left=f;
     c->right=g;
-    // nthprint(a,1,3);
-    // int n=level(a);
-    // for(int i=0;i<=n;i++){
-    //     nthprint(a,0,i);
-    //     cout<<endl;
-    // }
+    printnth(a,1,3);
+    int n=level(a);
+    for(int i=0;i<=n;i++){
+        printnth(a,0,i);
+        cout<<endl;
+    }
     LevelOrderQueue(a);
- 
-
 }

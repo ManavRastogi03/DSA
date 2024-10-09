@@ -1,23 +1,25 @@
 #include<iostream>
 using namespace std;
 int main(){
-    int arr[]={1,2,4,5,9,15,18,19,21,64};
-    int n=10;
-    int x=18;
+    int arr[]={1,2,4,5,9,15,18,21,24};
+    int n=sizeof(arr)/sizeof(arr[0]);
     int hi=n-1;
     int lo=0;
+    int target;
+    cin>>target;
     while(hi>=lo){
-        int mid=(hi+lo)/2;
-        if(arr[mid]>x){
-            hi=mid-1;
-        }
-        else if(arr[mid]<x){
-            lo=mid+1;
-        }
-        else{
+        int mid=lo+(hi-lo)/2;
+        if(target==arr[mid]){
             cout<<mid;
             break;
         }
+        else if(arr[mid]>target){
+            hi=mid-1;
+        }
+        else{
+            lo=mid+1;
+        }
     }
-
 }
+// For T.C n/2^x=1;
+// T.c=Log(n)

@@ -1,29 +1,28 @@
 #include<iostream>
 using namespace std;
 int main(){
-    int arr[]={1,2,4,5,9,15,19,18,21,14};
-    int n=9;
-    int x=20;
-    // for(int i=0;i<n;i++){
-    //     if(arr[i]>x){
-    //         cout<<arr[i-1];
-    //         break;           
-    //     }
-    // }//0(n)
+    int arr[]={1,2,4,5,9,15,18,21,24};
+    int n=sizeof(arr)/sizeof(arr[0]);
     int lo=0;
     int hi=n-1;
-    bool flag=false;
+    int target;
+    cin>>target;
+    bool flag =true;
     while(hi>=lo){
         int mid=lo+(hi-lo)/2;
-        if(arr[mid]==x){
-            flag=true;
+        if(arr[mid]==target){
+            flag=false;
             cout<<arr[mid-1];
             break;
         }
-        else if(arr[mid]<x) lo=mid+1;
-        else hi=mid-1; 
+        if(arr[mid]>target){
+            hi=mid-1;
+        }
+        else{
+            lo=mid+1;
+        }
     }
-    if(flag==false){
+    if(flag){
         cout<<arr[hi];
     }
 }

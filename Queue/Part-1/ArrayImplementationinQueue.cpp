@@ -1,45 +1,37 @@
 #include<iostream>
-#include<queue>
 using namespace std;
 class Queue{
 public:
     int arr[5];
-    int f=0;
-    int b=0;
-    int s=0;
+    int f;
+    int b;
+    Queue(){
+        f=0;
+        b=0;
+    }
+
     void push(int val){
         if(b==5){
             cout<<"Overflow";
             return;
-        }       
+        }
         arr[b]=val;
         b++;
-        s++;
     }
     void pop(){
-        if(b-f==0){
-            cout<<"Underflow";
-            return;
-        }
+        if(size()==0) return;
         f++;
-        s--;
     }
-    void front(){
-        if(s==0){
-            cout<<"Underflow";
-            return;
-        }
-        cout<<f<<endl;
+    int size(){
+        return b-f;
     }
-    void back(){
-        if(s==0){
-            cout<<"Underflow";
-            return;
-        }
-        cout<<b;
-    } 
-    void size(){
-        cout<<b-f;
+    int front(){
+        if(size()==0) return -1;
+        return arr[f];
+    }
+    int back(){
+        if(size()==0) return -1;
+        return arr[b-1];
     }
     void display(){
         for(int i=f;i<b;i++){
@@ -49,12 +41,14 @@ public:
     }
 };
 int main(){
-    Queue q;
+    Queue q;  
     q.push(10);
-    q.push(20);
-    q.push(30);
-    q.push(40);
-    q.push(50);
+    q.push(20); 
+    q.push(30); 
+    q.push(40); 
+    q.push(50); 
+    // q.push(60); 
+    q.pop();
     q.display();
-    q.size();
+
 }

@@ -8,9 +8,7 @@ public:
     Node(int val){
         this->val=val;
         this->next=NULL;
-        this->prev=NULL;
     }
-
 };
 class Deque{
 public:
@@ -28,6 +26,7 @@ public:
             tail->next=temp;
             temp->prev=tail;
             tail=temp;
+
         }
         size++;
     }
@@ -42,37 +41,28 @@ public:
         size++;
     }
     void popFront(){
-        if(size==0) cout<<"List is empty";
-        else{
-            head=head->next;
-            if(head!=NULL)  head->prev=NULL;
-            if(head==NULL) tail=NULL;
-            size--;
+        if(size==0){
+            cout<<"UnderFlow";
+            return;
         }
+        head=head->next;
+        if(head) head->prev=NULL;
+        if(head==NULL) tail=NULL;
+        size--;
     }
     void popBack(){
-        if(size==0) cout<<"List is empty";
-        else{
-            Node* temp=tail->prev;
-            temp->next=NULL;
-            tail=temp;
-            size--;
-        }
-    }
-        void front(){
         if(size==0){
-            cout<<"Queue Is Empty";
+            cout<<"UnderFlow";
             return;
-        } 
-        cout<<head->val;
-    }
-    void back(){
-        if(size==0){
-            cout<<"Queue is Empty";
         }
-        else{
-            cout<<tail->val;
+        else if(size==1){
+            popFront();
+            return;
         }
+        Node* temp=tail->prev;
+        temp->next=NULL;
+        tail=temp;
+        size--;
     }
     void display(){
         Node* temp=head;
@@ -80,19 +70,22 @@ public:
             cout<<temp->val<<" ";
             temp=temp->next;
         }
-
         cout<<endl;
     }
 };
 int main(){
     Deque q;
     q.pushBack(10);
-    q.pushFront(20);
+    q.pushBack(20);
     q.pushBack(30);
-    q.pushFront(40);
-    q.pushBack(50);
+    q.pushBack(40);
     q.display();
     q.popBack();
     q.display();
+    q.popFront();
+    q.display();
+    q.pushFront(100);
+    q.display();
+
 
 }
